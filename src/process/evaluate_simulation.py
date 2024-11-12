@@ -17,8 +17,8 @@ OBJECT_NAME = "/Users/kent/Desktop/GI_2/image/5*5dots_random.bmp"
 MASK_NAME = f"/Users/kent/Desktop/GI_2/mask/randomimage_size200_block{BLOCK}_num{NUM}/"
 SIZE = 200
 DOTS_NUM = 5
-RESULT_TEXT_FILE = f'/Users/kent/Desktop/GI_2/result_text/{BLOCK}px_data_test.txt'
-RESULT_FIG_FILE = f'/Users/kent/Desktop/Kenkyu/plot/{BLOCK}px_data_test.png'
+RESULT_TEXT_FILE = f'/Users/kent/Desktop/GI_2/result_text/process_result/{BLOCK}px_data_simulation.txt'
+RESULT_FIG_FILE = f'/Users/kent/Desktop/Kenkyu/plot/{BLOCK}px_data_simulation.png'
 
 
 # ==============================================================

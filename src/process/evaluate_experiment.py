@@ -13,12 +13,12 @@ import requests
 
 BLOCK = 5
 NUM = 5000
-DOTS_POSITION_FILE = "/Users/kent/Desktop/GI_2/image/5*5dots_random.scv"
-EXPERIMENT_RESULT_FILE = "/Users/kent/Desktop/GI_2/result_text/experiment_result/block1_5000.txt"
+DOTS_POSITION_FILE = "/Users/kent/Desktop/GI_2/image/5*5dots_random.scv" 
+EXPERIMENT_RESULT_FILE = f"/Users/kent/Desktop/GI_2/result_text/experiment_result/block{BLOCK}_5000.txt"
 MASK_NAME = f"/Users/kent/Desktop/GI_2/mask/randomimage_size200_block{BLOCK}_num{NUM}/"
 SIZE = 200
 DOTS_NUM = 5
-RESULT_TEXT_FILE = f'/Users/kent/Desktop/GI_2/result_text/{BLOCK}px_data_test.txt'
+RESULT_TEXT_FILE = f'/Users/kent/Desktop/GI_2/result_text/process_result/{BLOCK}px_data.txt'
 RESULT_FIG_FILE = f'/Users/kent/Desktop/Kenkyu/plot/{BLOCK}px_data_test.png'
 
 
