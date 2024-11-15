@@ -4,17 +4,17 @@ import math
 import cv2
 import csv
 
-with open('/Users/kent/Desktop/GI_2/result_text/process_result/5px_data_experiment.txt', 'r', encoding='utf-8') as file:
+with open('/Users/kent/Desktop/GI_2/result_text/process_result/5px_data_simulation.txt', 'r', encoding='utf-8') as file:
     data5 = []
     for line in file:
         data5.append(list(map(float,line.split())))
         
-with open('/Users/kent/Desktop/GI_2/result_text/process_result/3px_data_experiment.txt', 'r', encoding='utf-8') as file:
+with open('/Users/kent/Desktop/GI_2/result_text/process_result/3px_data_simulation.txt', 'r', encoding='utf-8') as file:
     data3 = []
     for line in file:
         data3.append(list(map(float,line.split())))
         
-with open('/Users/kent/Desktop/GI_2/result_text/process_result/1px_data_experiment.txt', 'r', encoding='utf-8') as file:
+with open('/Users/kent/Desktop/GI_2/result_text/process_result/1px_data_simulation.txt', 'r', encoding='utf-8') as file:
     data1 = []
     for line in file:
         data1.append(list(map(float,line.split())))
