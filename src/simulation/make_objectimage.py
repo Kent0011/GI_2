@@ -6,10 +6,11 @@ import os
 
 #================================================================
 
-SIZE = 200 # 画像サイズ
+SIZE = 400 # 画像サイズ
 SIGMA = 5.31 / 2.354
+NUMOFDOTS = 10
 FILETYPE = '.bmp'
-FILENAME = f'/Users/kent/Desktop/GI_2/image/test'
+FILENAME = f'/Users/kent/Desktop/GI_2/image/test400'
 
 #================================================================
 
@@ -26,18 +27,14 @@ def makedot(img: list, i_0: float, j_0: float) -> list:
 def makeimage(size, filename):
     
     width, height = size, size
-    distance = width/5
-    
-    # filenameが存在しないとき作成
-    if not os.path.exists(filename):
-        os.makedirs(filename)
+    distance = width/NUMOFDOTS
     
     dots_destination = []
     
     img = np.zeros((height,width), dtype=np.uint8)
     
-    for i in range(5):
-        for j in range(5):
+    for i in range(NUMOFDOTS):
+        for j in range(NUMOFDOTS):
             i_0 = distance/2 + distance*i + random.random()*distance/4
             j_0 = distance/2 + distance*j + random.random()*distance/4
             img = makedot(img, i_0, j_0)
@@ -58,5 +55,5 @@ if __name__ == '__main__':
     size = SIZE
     filename = FILENAME
     
-    makeimage(size=200, filename=filename)
+    makeimage(size=SIZE, filename=filename)
 

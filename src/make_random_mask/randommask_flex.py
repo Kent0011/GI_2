@@ -6,13 +6,13 @@ import os
 
 #================================================================
 
-SIZE = 200 # 画像サイズ
-BLOCK = 7 # パターンブロックサイズ
-NUM_OF_IMAGE = 5000
+SIZE = 400 # 画像サイズ
+BLOCK = 5 # パターンブロックサイズ
+NUM_OF_IMAGE = 4000
 VARIABLE = True # True: 可変, False: 固定
 CUT_SIZE = 20
 FILETYPE = '.bmp'
-FILENAME = f'/Users/kent/Desktop/Kenkyu/GI_2/2024_9_10/randomimage_size{SIZE}_block{BLOCK}_num{NUM_OF_IMAGE}_2/'
+FILENAME = f'/Users/kent/Desktop/GI_2/mask/randomimage_size{SIZE}_block{BLOCK}_num{NUM_OF_IMAGE}/'
 
 #================================================================
 
