@@ -7,7 +7,7 @@ from matplotlib import pyplot as plt
 
 # =====================================================
 
-NUMBER = 509
+NUMBER = 5000
 OBJECT_PASS = "/Users/kent/Desktop/GI_2/image/5*5dots_random.bmp"
 MASK_PASS = "/Users/kent/Desktop/GI_2/mask/randomimage_size200_block5_num5000/"
 SIZE = 200
@@ -58,7 +58,7 @@ def calcCGI(num,objname, maskname, size, resultfolder):
 
     if not os.path.exists(resultfolder):
         os.makedirs(resultfolder)
-    resultfile = resultfolder + "GI_simuration_" +"test509.bmp"
+    resultfile = resultfolder + "GI_simuration_" +"test5000.bmp"
     
     if cv2.imwrite(resultfile, T2):
         print('simuration succed')
