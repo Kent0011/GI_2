@@ -11,14 +11,14 @@ import requests
 # ==============================================================
 
 BLOCK = 5
-NUM = 4000
-SIZE = 400
-DOTS_POSITION_FILE = "/Users/kent/Desktop/GI_2/image/test400_dots.csv"
-OBJECT_NAME = "/Users/kent/Desktop/GI_2/image/test400.bmp"
-MASK_NAME = f"/Users/kent/Desktop/GI_2/mask/randomimage_size{SIZE}_block{BLOCK}_num{NUM}/"
-DOTS_NUM = 10
-RESULT_TEXT_FILE = f'/Users/kent/Desktop/GI_2/result_text/process_result/{BLOCK}px_400_simulation.txt'
-RESULT_FIG_FILE = f'/Users/kent/Desktop/Kenkyu/plot/{BLOCK}px_400_simulation.png'
+NUM = 40
+SIZE = 40
+DOTS_POSITION_FILE = "/Users/kent/Desktop/GI_2/image/test40_dots.csv"
+OBJECT_NAME = "/Users/kent/Desktop/GI_2/image/test40.bmp"
+MASK_NAME = f"/Users/kent/Desktop/GI_2/mask/randomimage_size{SIZE}_block{BLOCK}_num40/"
+DOTS_NUM = 1
+RESULT_TEXT_FILE = f'/Users/kent/Desktop/GI_2/result_text/process_result/{BLOCK}px_40_simulation.txt'
+RESULT_FIG_FILE = f'/Users/kent/Desktop/Kenkyu/plot/{BLOCK}px_40_simulation.png'
 
 
 # ==============================================================

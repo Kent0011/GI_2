@@ -6,11 +6,11 @@ import os
 
 #================================================================
 
-SIZE = 400 # 画像サイズ
+SIZE = 40 # 画像サイズ
 SIGMA = 5.31 / 2.354
-NUMOFDOTS = 10
+NUMOFDOTS = 1
 FILETYPE = '.bmp'
-FILENAME = f'/Users/kent/Desktop/GI_2/image/test400'
+FILENAME = f'/Users/kent/Desktop/GI_2/image/test40'
 
 #================================================================
 
