@@ -184,7 +184,7 @@ def save_frame_camera_key(b_save_folder , measurment_num, mask_folder):
 
     text="実験終了:"+str(measurment_num)+"回/n"+str(tim)+"分かかりました"
     # webhookURL
-    webhook_url = "https://hooks.slack.com/services/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"
+    webhook_url = ""
 
     # send to Slack
     requests.post(webhook_url, data = json.dumps({
