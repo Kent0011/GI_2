@@ -17,8 +17,8 @@ DOTS_POSITION_FILE = "/Users/kent/Desktop/GI_2/image/5*5dots_random.csv"
 OBJECT_NAME = "/Users/kent/Desktop/GI_2/image/5*5dots_random.bmp"
 MASK_NAME = f"/Users/kent/Desktop/GI_2/mask/randomimage_size{SIZE}_block{BLOCK}_num5000/"
 DOTS_NUM = 5
-RESULT_TEXT_FILE = f'/Users/kent/Desktop/GI_2/result_text/process_result/{BLOCK}px_data_simulation.txt'
-RESULT_FIG_FILE = f'/Users/kent/Desktop/Kenkyu/plot/{BLOCK}px_data_simulation.png'
+RESULT_TEXT_FILE = f'/Users/kent/Desktop/GI_2/result_text/process_result/{BLOCK}px_data_simulation_new.txt'
+RESULT_FIG_FILE = f'/Users/kent/Desktop/Kenkyu/plot/{BLOCK}px_data_simulation_new.png'
 
 
 # ==============================================================
@@ -79,15 +79,15 @@ def read_image(img: list, dots_vertical: int, dots_horizontal: int, title:str) -
     # 中心位置検出
     for i in range(dots_vertical):
         for j in range(dots_horizontal):
-            tmp = serach_brightest_grid(img[height*i:height*(i+1), width*j:width*(j+1)], 8, height*i, width*j)
+            tmp = serach_brightest_grid(img[height*i:height*(i+1), width*j:width*(j+1)], 7, height*i, width*j)
             dot_position.append(tmp)
     
     ans = []        
 
     # 重心計算
     for dot in dot_position:
-        grid = img[dot[0]-7:dot[0]+1, dot[1]-7:dot[1]+1]
-        cent = serach_centroid(grid,dot[0]-7, dot[1]-7)
+        grid = img[dot[0]-6:dot[0]+1, dot[1]-6:dot[1]+1]
+        cent = serach_centroid(grid,dot[0]-6, dot[1]-6)
         ans.append(cent)
             
     return ans
