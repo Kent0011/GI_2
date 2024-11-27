@@ -6,11 +6,11 @@ import os
 
 #================================================================
 
-SIZE = 40 # 画像サイズ
+SIZE = 200 # 画像サイズ
 SIGMA = 5.31 / 2.354
-NUMOFDOTS = 1
+NUMOFDOTS = 5
 FILETYPE = '.bmp'
-FILENAME = f'/Users/kent/Desktop/GI_2/image/test40'
+FILENAME = f'/Users/kent/Desktop/GI_2/image/testforZERN'
 
 #================================================================
 
@@ -35,8 +35,8 @@ def makeimage(size, filename):
     
     for i in range(NUMOFDOTS):
         for j in range(NUMOFDOTS):
-            i_0 = distance/2 + distance*i + random.random()*distance/4
-            j_0 = distance/2 + distance*j + random.random()*distance/4
+            i_0 = distance/2 + distance*i + (random.random()-0.5)*distance/2
+            j_0 = distance/2 + distance*j + (random.random()-0.5)*distance/2
             img = makedot(img, i_0, j_0)
             dots_destination.append((i_0, j_0))
     
