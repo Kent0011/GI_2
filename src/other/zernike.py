@@ -16,7 +16,7 @@ d_zero = itertools.product(x,y)
 
 d_zero = pd.DataFrame(d_zero)
 
-ans =  (df - d_zero)
+ans =  (df - d_zero) * PX / 8700
 ans.columns = ["delta_y", "delta_x"]
 d_zero.columns = ["y", "x"]
 
@@ -34,14 +34,59 @@ xx, yy = np.meshgrid(new_x_coord, new_y_coord)
 
 
 knew_xy_coord = df[['x', 'y']].values
+knew_values = df['delta_x'].values
+
+result_x = griddata(points=knew_xy_coord, values=knew_values, xi=(xx, yy), method='cubic')
+
+knew_xy_coord = df[['x', 'y']].values
 knew_values = df['delta_y'].values
 
-result = griddata(points=knew_xy_coord, values=knew_values, xi=(xx, yy), method='cubic')
+result_y = griddata(points=knew_xy_coord, values=knew_values, xi=(xx, yy), method='cubic')
 
-# グラフ表示
+W_x = np.zeros((200,200))
+
+for i in range(20,180):
+    W_x[i+1][20] = W_x[i][20] + result_y[i+1][20]
+    
+for j in range(20,180):
+    for i in range(20,180):
+        W_x[i][j+1] = W_x[i][j] + result_x[i][j+1]
+        
 fig = plt.figure()
 ax = fig.add_subplot(111)
-ax.set_aspect('equal', adjustable='box')
-ax.contourf(xx, yy, result, cmap='jet')
+MAX = max(np.max(W_x), -np.min(W_x))
+img = ax.imshow(W_x, cmap="jet", vmin=-MAX, vmax=MAX)
+plt.colorbar(img)
+plt.gca().set_ylim(199, 0)
+plt.show()
+
+
+
+W_y = np.zeros((200,200))
+
+
+for j in range(20,180):
+    W_y[20][j+1] = W_y[20][j] + result_x[20][j+1]
+    
+for i in range(20,180):
+    for j in range(20,180):
+        W_y[i+1][j] = W_y[i][j] + result_y[i+1][j]
+        
+fig = plt.figure()
+ax = fig.add_subplot(111)
+MAX = max(np.max(W_y), -np.min(W_y))
+img = ax.imshow(W_y, cmap="jet", vmin=-MAX, vmax=MAX)
+plt.colorbar(img)
+plt.gca().set_ylim(199, 0)
+plt.show()
+
+W = (W_x + W_y) /2
+
+
+fig = plt.figure()
+ax = fig.add_subplot(111)
+MAX = max(np.max(W), -np.min(W))
+img = ax.imshow(W, cmap="jet", vmin=-MAX, vmax=MAX)
+plt.colorbar(img)
 plt.gca().set_ylim(199, 0)
 plt.show()
