@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 PX = 7.5
 
-df = pd.read_csv("/Users/kent/Desktop/GI_2/image/testforZERN_dots.csv", header=None)
+df = pd.read_csv("/Users/kent/Desktop/GI_2/src/zernike/dots_dots.csv", header=None)
 
 x = [20, 60, 100, 140, 180]
 y = x.copy()
