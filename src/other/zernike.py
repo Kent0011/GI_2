@@ -38,10 +38,28 @@ knew_values = df['delta_x'].values
 
 result_x = griddata(points=knew_xy_coord, values=knew_values, xi=(xx, yy), method='cubic')
 
+fig = plt.figure()
+ax = fig.add_subplot(111)
+MAX = 0.02
+img = ax.imshow(result_x, cmap="jet", vmin=-MAX, vmax=MAX)
+plt.colorbar(img)
+plt.gca().set_ylim(199, 0)
+plt.show()
+
+
 knew_xy_coord = df[['x', 'y']].values
 knew_values = df['delta_y'].values
 
 result_y = griddata(points=knew_xy_coord, values=knew_values, xi=(xx, yy), method='cubic')
+
+fig = plt.figure()
+ax = fig.add_subplot(111)
+MAX = 0.02
+img = ax.imshow(result_y, cmap="jet", vmin=-MAX, vmax=MAX)
+plt.colorbar(img)
+plt.gca().set_ylim(199, 0)
+plt.show()
+
 
 W_x = np.zeros((200,200))
 
