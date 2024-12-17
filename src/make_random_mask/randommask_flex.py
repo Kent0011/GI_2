@@ -6,9 +6,9 @@ import os
 
 #================================================================
 
-SIZE = 40 # 画像サイズ
-BLOCK = 5 # パターンブロックサイズ
-NUM_OF_IMAGE = 40
+SIZE = 1000 # 画像サイズ
+BLOCK = 50 # パターンブロックサイズ
+NUM_OF_IMAGE = 1
 VARIABLE = True # True: 可変, False: 固定
 CUT_SIZE = 20
 FILETYPE = '.bmp'

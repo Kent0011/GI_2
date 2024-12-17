@@ -4,10 +4,13 @@ import pandas as pd
 import itertools
 import matplotlib.pyplot as plt
 from scipy.interpolate import griddata
+import zern.zern_core as zern
+from numpy.random import RandomState
+
 
 PX = 7.5
 
-df = pd.read_csv("/Users/kent/Desktop/GI_2/src/zernike/dots_dots.csv", header=None)
+df = pd.read_csv("/Users/kent/Desktop/GI_2/src/zernike/dots_GI.csv", header=None)
 
 x = [20, 60, 100, 140, 180]
 y = x.copy()
@@ -108,6 +111,57 @@ fig = plt.figure()
 ax = fig.add_subplot(111)
 MAX = max(np.max(W), -np.min(W))
 img = ax.imshow(W, cmap="jet", vmin=-MAX, vmax=MAX)
+plt.colorbar(img)
+plt.gca().set_ylim(199, 0)
+plt.show()
+
+
+
+
+plt.rc('font', family='serif')
+plt.rc('text', usetex=False)
+cmap = 'jet'
+
+# Parameters
+N = 200      # Number of pixels
+N_zern = 50
+rho_max = 1.0
+randgen = RandomState(12345)  # random seed
+
+# [0] Construct the coordinates and the aperture mask - simple circ
+x = np.linspace(-rho_max, rho_max, N)
+xx, yy = np.meshgrid(x, x)
+rho = np.sqrt(xx ** 2 + yy ** 2)
+theta = np.arctan2(xx, yy)
+aperture_mask = rho <= rho_max
+rho, theta = rho[aperture_mask], theta[aperture_mask]
+
+
+# ゼルニケ多項式第4項のみの波面を算出 (球面波)
+z = zern.Zernike(mask=aperture_mask)
+z.create_model_matrix(rho, theta, n_zernike=N_zern, mode='Jacobi', normalize_noll=False)
+
+Np, Nz = z.model_matrix_flat.shape
+print(f"Zernike class holds a model matrix of shape ({Np}, {Nz})")
+print(f"Np = {Np} is the number of non-zero entries in our aperture")
+print(f"Nz = {Nz} is the total number of Zernike polynomials modelled!!")
+
+coef = np.zeros(N_zern)
+coef[4] = 1
+phase_map = z.get_zernike(coef)
+
+fig = plt.figure()
+ax = fig.add_subplot(111)
+MAX = 1
+img = ax.imshow(phase_map, cmap="jet", vmin=-MAX, vmax=MAX)
+plt.colorbar(img)
+plt.gca().set_ylim(199, 0)
+plt.show()
+
+fig = plt.figure()
+ax = fig.add_subplot(111)
+MAX = 1
+img = ax.imshow(W-phase_map, cmap="jet", vmin=-MAX, vmax=MAX)
 plt.colorbar(img)
 plt.gca().set_ylim(199, 0)
 plt.show()

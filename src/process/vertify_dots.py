@@ -92,7 +92,7 @@ if __name__ == '__main__':
     dots = 5
     
     read_image(
-    image_pass = '/Users/kent/Desktop/GI_2/result_image/GI_simuration_test452.bmp',
+    image_pass = '/Users/kent/Desktop/GI_2/zernike/GI_simuration_test452.bmp',
     dots_vertical = dots,
     dots_horizontal = dots,
     size = 7)
