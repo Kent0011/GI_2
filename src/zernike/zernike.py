@@ -9,6 +9,7 @@ from numpy.random import RandomState
 
 
 PX = 7.5
+MLA_F = 14200
 
 df = pd.read_csv("/Users/kent/Desktop/GI_2/src/zernike/dots_GI.csv", header=None)
 
@@ -19,7 +20,7 @@ d_zero = itertools.product(x,y)
 
 d_zero = pd.DataFrame(d_zero)
 
-ans =  (df - d_zero) * PX / 870
+ans =  (df - d_zero) * PX / MLA_F
 ans.columns = ["delta_y", "delta_x"]
 d_zero.columns = ["y", "x"]
 
@@ -43,7 +44,7 @@ result_x = griddata(points=knew_xy_coord, values=knew_values, xi=(xx, yy), metho
 
 fig = plt.figure()
 ax = fig.add_subplot(111)
-MAX = 0.1
+MAX = max(np.max(result_x), -np.min(result_x))
 img = ax.imshow(result_x, cmap="jet", vmin=-MAX, vmax=MAX)
 plt.colorbar(img)
 plt.gca().set_ylim(199, 0)
@@ -57,7 +58,7 @@ result_y = griddata(points=knew_xy_coord, values=knew_values, xi=(xx, yy), metho
 
 fig = plt.figure()
 ax = fig.add_subplot(111)
-MAX = 0.1
+MAX = max(np.max(result_y), -np.min(result_y))
 img = ax.imshow(result_y, cmap="jet", vmin=-MAX, vmax=MAX)
 plt.colorbar(img)
 plt.gca().set_ylim(199, 0)
@@ -65,7 +66,7 @@ plt.show()
 
 
 W_x = np.zeros((200,200))
-W_x[20][20] = 1.0
+W_x[20][20] = 0.176
 
 for i in range(20,180):
     W_x[i+1][20] = W_x[i][20] + result_y[i+1][20]
@@ -86,7 +87,7 @@ plt.show()
 
 
 W_y = np.zeros((200,200))
-W_y[20][20] = 1.0
+W_y[20][20] = 0.176
 
 for j in range(20,180):
     W_y[20][j+1] = W_y[20][j] + result_x[20][j+1]
@@ -127,6 +128,7 @@ N = 200      # Number of pixels
 N_zern = 50
 rho_max = 1.0
 randgen = RandomState(12345)  # random seed
+lambda0 = 0.65
 
 # [0] Construct the coordinates and the aperture mask - simple circ
 x = np.linspace(-rho_max, rho_max, N)
@@ -147,12 +149,12 @@ print(f"Np = {Np} is the number of non-zero entries in our aperture")
 print(f"Nz = {Nz} is the total number of Zernike polynomials modelled!!")
 
 coef = np.zeros(N_zern)
-coef[4] = 1
+coef[4] = lambda0 / 4
 phase_map = z.get_zernike(coef)
 
 fig = plt.figure()
 ax = fig.add_subplot(111)
-MAX = 1
+MAX = max(np.max(phase_map), -np.min(phase_map))
 img = ax.imshow(phase_map, cmap="jet", vmin=-MAX, vmax=MAX)
 plt.colorbar(img)
 plt.gca().set_ylim(199, 0)
@@ -160,7 +162,7 @@ plt.show()
 
 fig = plt.figure()
 ax = fig.add_subplot(111)
-MAX = 1
+MAX = max(np.max(W-phase_map), -np.min(W-phase_map))
 img = ax.imshow(W-phase_map, cmap="jet", vmin=-MAX, vmax=MAX)
 plt.colorbar(img)
 plt.gca().set_ylim(199, 0)

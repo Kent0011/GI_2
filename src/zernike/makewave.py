@@ -15,6 +15,7 @@ N = 200      # Number of pixels
 N_zern = 50
 rho_max = 1.0
 randgen = RandomState(12345)  # random seed
+lambda0 = 0.65
 
 # [0] Construct the coordinates and the aperture mask - simple circ
 x = np.linspace(-rho_max, rho_max, N)
@@ -39,7 +40,7 @@ print(f"Np = {Np} is the number of non-zero entries in our aperture")
 print(f"Nz = {Nz} is the total number of Zernike polynomials modelled!!")
 
 coef = np.zeros(N_zern)
-coef[4] = 1
+coef[4] = lambda0 / 4
 phase_map = z.get_zernike(coef)
 
 
@@ -48,7 +49,7 @@ phase_map = z.get_zernike(coef)
 
 # 波面の可視化
 fig, ax = plt.subplots(1, 1)
-MAX = 1
+MAX = max(np.max(phase_map), -np.min(phase_map))
 img = ax.imshow(phase_map, cmap=cmap, vmin=-MAX, vmax=MAX)
 plt.colorbar(img)
 plt.show()
@@ -67,11 +68,11 @@ for i in range(1,N):
 
 l = np.array([20,60,100,140,180])
 
-for i in itertools.product(l,repeat=2):
-    print("Y -- i:",i[0],"j:",i[1]," = ", phase_map_y[i[0]][i[1]])
+# for i in itertools.product(l,repeat=2):
+    # print("Y -- i:",i[0],"j:",i[1]," = ", phase_map_y[i[0]][i[1]])
     
 fig, ax = plt.subplots(1, 1)
-MAX = 0.1
+MAX = max(np.max(phase_map_y), -np.min(phase_map_y))
 img = ax.imshow(phase_map_y, cmap=cmap, vmin=-MAX, vmax=MAX)
 plt.colorbar(img)
 plt.show()
@@ -90,10 +91,10 @@ for i in range(N):
 l = np.array([20,60,100,140,180])
 
 for i in itertools.product(l,repeat=2):
-    print("X -- i:",i[0],"j:",i[1]," = ", phase_map_x[i[0]][i[1]])
+    print(i[0],",",i[1],",",phase_map_x[i[0]][i[1]],",", phase_map_y[i[0]][i[1]])
 
 fig, ax = plt.subplots(1, 1)
-MAX = 0.1
+MAX = max(np.max(phase_map_x), -np.min(phase_map_x))
 img = ax.imshow(phase_map_x, cmap=cmap, vmin=-MAX, vmax=MAX)
 plt.colorbar(img)
 plt.show()

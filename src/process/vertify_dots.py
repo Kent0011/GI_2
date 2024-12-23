@@ -82,7 +82,7 @@ def read_image(image_pass: str, dots_vertical: int, dots_horizontal: int, size: 
             
     # 画像表示
     plt.imshow(img)
-    plt.savefig(f'/Users/kent/Desktop/GI_2/result_image/452_dots')
+    plt.savefig(f'/Users/kent/Desktop/GI_2/result_image/1223_dots')
     plt.show()
     
     return img
@@ -92,7 +92,7 @@ if __name__ == '__main__':
     dots = 5
     
     read_image(
-    image_pass = '/Users/kent/Desktop/GI_2/zernike/GI_simuration_test452.bmp',
+    image_pass = '/Users/kent/Desktop/GI_2/src/zernike/GI_simuration_test5000.bmp',
     dots_vertical = dots,
     dots_horizontal = dots,
     size = 7)

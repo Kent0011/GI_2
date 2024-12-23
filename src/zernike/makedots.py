@@ -12,7 +12,7 @@ NUMOFDOTS = 5
 FILETYPE = '.bmp'
 FILENAME = f'/Users/kent/Desktop/GI_2/src/zernike/dots'
 PX = 7.5
-MLA_F = 870
+MLA_F = 14200
 
 #================================================================
 
@@ -37,8 +37,8 @@ def makeimage(size, filename):
     
     df = pd.read_csv("/Users/kent/Desktop/GI_2/src/zernike/doterror.csv", header=None)
     df.columns = ["i","j","x","y"]
-    e_x = df["x"].tolist()
-    e_y = df["y"].tolist()
+    e_x = np.array(df["x"].tolist())
+    e_y = np.array(df["y"].tolist())
     
     count=0
     for i in range(NUMOFDOTS):

@@ -7,11 +7,11 @@ from matplotlib import pyplot as plt
 
 # =====================================================
 
-NUMBER = 500
+NUMBER = 5000
 OBJECT_PASS = "/Users/kent/Desktop/GI_2/src/zernike/dots.bmp"
 MASK_PASS = "/Users/kent/Desktop/GI_2/mask/randomimage_size200_block5_num5000/"
 SIZE = 200
-RESULT_PASS = "/Users/kent/Desktop/GI_2/zernike/"
+RESULT_PASS = "/Users/kent/Desktop/GI_2/src/zernike/"
 
 
 # =====================================================
