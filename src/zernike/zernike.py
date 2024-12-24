@@ -162,7 +162,7 @@ plt.show()
 
 fig = plt.figure()
 ax = fig.add_subplot(111)
-MAX = max(np.max(W-phase_map), -np.min(W-phase_map))
+MAX = max(np.max(phase_map), -np.min(phase_map))
 img = ax.imshow(W-phase_map, cmap="jet", vmin=-MAX, vmax=MAX)
 plt.colorbar(img)
 plt.gca().set_ylim(199, 0)

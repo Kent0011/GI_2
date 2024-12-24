@@ -82,7 +82,6 @@ def read_image(image_pass: str, dots_vertical: int, dots_horizontal: int, size: 
             
     # 画像表示
     plt.imshow(img)
-    plt.savefig(f'/Users/kent/Desktop/GI_2/result_image/1223_dots')
     plt.show()
     
     return img

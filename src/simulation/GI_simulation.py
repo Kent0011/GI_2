@@ -63,6 +63,4 @@ def calcCGI(num,objname, maskname, size, resultfolder):
     if cv2.imwrite(resultfile, T2):
         print('simuration succed')
 
-
-
 calcCGI(NUMBER, OBJECT_PASS, MASK_PASS, SIZE, RESULT_PASS)
