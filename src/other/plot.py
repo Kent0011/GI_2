@@ -24,7 +24,7 @@ data3 = np.array(data3).T
 data1 = np.array(data1).T
 x = list(range(1,5001))
 
-fig, (ax1, ax2) = plt.subplots(1,2)
+fig, (ax1) = plt.subplots(1)
 
 # --- 左のY軸にプロット ---
 ax1.set_xlabel('number')  # X軸のラベル
@@ -33,16 +33,11 @@ ax1.plot(x, data1[0], color = "green", label='1px')
 ax1.plot(x, data3[0], color = "blue", label='3px')
 ax1.plot(x, data5[0], color = "red", label='5px')
 
-# --- 右のY軸を追加してプロット ---
-ax2.set_xlabel('number')
-ax2.set_ylabel('var (px^2)')  # 右のY軸のラベル
-ax2.plot(x, data1[1], color = "green", label='1px')
-ax2.plot(x, data3[1],color = "blue", label='3px')
-ax2.plot(x, data5[1],color = "red", label='5px')
+# 縦軸の範囲を0から3に設定
+ax1.set_ylim(0, 3)
 
 # 凡例の表示
 ax1.legend()
-ax2.legend()
 
 # グラフの表示
 plt.show()
