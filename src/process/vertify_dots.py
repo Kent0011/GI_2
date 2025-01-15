@@ -77,7 +77,7 @@ def read_image(image_pass: str, dots_vertical: int, dots_horizontal: int, size: 
     for dot in dot_position:
         grid = img[dot[0]-size+1:dot[0]+1, dot[1]-size+1:dot[1]+1]
         cent = serach_centroid(grid,dot[0]-size+1, dot[1]-size+1)
-        print(*cent)
+        print(",".join(list(map(str,cent))))
         img[round(cent[0])][round(cent[1])] = [255,0,0]
             
     # 画像表示
@@ -91,7 +91,7 @@ if __name__ == '__main__':
     dots = 5
     
     read_image(
-    image_pass = '/Users/kent/Desktop/GI_2/src/zernike/GI_simuration_test5000.bmp',
+    image_pass = '/Users/kent/Desktop/GI_2/src/zernike/GI_simuration_test500.bmp',
     dots_vertical = dots,
     dots_horizontal = dots,
     size = 7)

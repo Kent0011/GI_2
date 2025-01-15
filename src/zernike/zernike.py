@@ -11,7 +11,7 @@ from numpy.random import RandomState
 PX = 7.5
 MLA_F = 14200
 
-df = pd.read_csv("/Users/kent/Desktop/GI_2/src/zernike/dots_GI.csv", header=None)
+df = pd.read_csv("/Users/kent/Desktop/GI_2/src/zernike/dot500.csv", header=None)
 
 x = [20, 60, 100, 140, 180]
 y = x.copy()
@@ -44,7 +44,7 @@ result_x = griddata(points=knew_xy_coord, values=knew_values, xi=(xx, yy), metho
 
 fig = plt.figure()
 ax = fig.add_subplot(111)
-MAX = max(np.max(result_x), -np.min(result_x))
+MAX = 0.2
 img = ax.imshow(result_x, cmap="jet", vmin=-MAX, vmax=MAX)
 plt.colorbar(img)
 plt.gca().set_ylim(199, 0)
@@ -78,7 +78,7 @@ for j in range(20,180):
         
 fig = plt.figure()
 ax = fig.add_subplot(111)
-MAX = max(np.max(W_x), -np.min(W_x))
+MAX = 0.2
 img = ax.imshow(W_x, cmap="jet", vmin=-MAX, vmax=MAX)
 plt.colorbar(img)
 plt.gca().set_ylim(199, 0)
@@ -99,23 +99,13 @@ for i in range(20,180):
         
 fig = plt.figure()
 ax = fig.add_subplot(111)
-MAX = max(np.max(W_y), -np.min(W_y))
+MAX = 0.2
 img = ax.imshow(W_y, cmap="jet", vmin=-MAX, vmax=MAX)
 plt.colorbar(img)
 plt.gca().set_ylim(199, 0)
 plt.show()
 
 W = (W_x + W_y) /2
-
-
-fig = plt.figure()
-ax = fig.add_subplot(111)
-MAX = max(np.max(W), -np.min(W))
-img = ax.imshow(W, cmap="jet", vmin=-MAX, vmax=MAX)
-plt.colorbar(img)
-plt.gca().set_ylim(199, 0)
-plt.show()
-
 
 
 
@@ -162,7 +152,13 @@ plt.show()
 
 fig = plt.figure()
 ax = fig.add_subplot(111)
-MAX = max(np.max(phase_map), -np.min(phase_map))
+img = ax.imshow(W, cmap="jet", vmin=-MAX, vmax=MAX)
+plt.colorbar(img)
+plt.gca().set_ylim(199, 0)
+plt.show()
+
+fig = plt.figure()
+ax = fig.add_subplot(111)
 img = ax.imshow(W-phase_map, cmap="jet", vmin=-MAX, vmax=MAX)
 plt.colorbar(img)
 plt.gca().set_ylim(199, 0)
