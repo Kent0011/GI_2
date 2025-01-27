@@ -70,9 +70,9 @@ def calcCGI(measurment_num, size, b_path, mask_folder, save_folder):
 
 # 変更箇所
 calcCGI(
-    measurment_num=5000,
+    measurment_num=100,
     size = 200,
-    b_path = "/Volumes/Public/2024th/yamamoto/GI/0116/block5_plane_5000.txt",
+    b_path = "/Users/kent/Desktop/GI_2/result_text/block5_plane_5000.txt",
     mask_folder='/Users/kent/Desktop/Kenkyu/GI/2024_9_10/randomimage_size200_block5_num5000/',
     save_folder='/Users/kent/Desktop/GI_2/result_text/')
 

@@ -62,23 +62,25 @@ def read_image(image_pass: str, dots_vertical: int, dots_horizontal: int, size: 
         for j in range(dots_horizontal):
             tmp = serach_brightest_grid(img[height*i:height*(i+1), width*j:width*(j+1)], size, height*i, width*j)
             dot_position.append(tmp)
-            img[int(tmp[0])][int(tmp[1])] = [0,0,255]
-            img[int(tmp[0]-size+1)][int(tmp[1])] = [0,0,255]
-            img[int(tmp[0])][int(tmp[1]-size+1)] = [0,0,255]
-            img[int(tmp[0]-size+1)][int(tmp[1]-size+1)] = [0,0,255]
+            # img[int(tmp[0])][int(tmp[1])] = [0,0,255]
+            # img[int(tmp[0]-size+1)][int(tmp[1])] = [0,0,255]
+            # img[int(tmp[0])][int(tmp[1]-size+1)] = [0,0,255]
+            # img[int(tmp[0]-size+1)][int(tmp[1]-size+1)] = [0,0,255]
     
     # マス目描画
-    for i, vert in enumerate(img):
-        for j, hrzn in enumerate(vert):
-            if i%height == 0 or j%width == 0:
-                img[i][j] = [200,200,200]
+    # for i, vert in enumerate(img):
+    #     for j, hrzn in enumerate(vert):
+    #         if i%height == 0 or j%width == 0:
+    #             img[i][j] = [200,200,200]
             
     # 重心計算
     for dot in dot_position:
         grid = img[dot[0]-size+1:dot[0]+1, dot[1]-size+1:dot[1]+1]
         cent = serach_centroid(grid,dot[0]-size+1, dot[1]-size+1)
         print(",".join(list(map(str,cent))))
-        img[round(cent[0])][round(cent[1])] = [255,0,0]
+        for i in range(round(cent[0])-1, round(cent[0])+2):
+            for j in range(round(cent[1])-1, round(cent[1])+2):
+                img[i][j] = [255,0,0]
             
     # 画像表示
     plt.imshow(img)
@@ -91,7 +93,7 @@ if __name__ == '__main__':
     dots = 5
     
     read_image(
-    image_pass = '/Users/kent/Desktop/GI_2/src/zernike/GI_simuration_test500.bmp',
+    image_pass = '/Users/kent/Desktop/GI_2/result_text/block5_100.png',
     dots_vertical = dots,
     dots_horizontal = dots,
     size = 7)
