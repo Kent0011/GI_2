@@ -62,7 +62,7 @@ def calcCGI(measurment_num, size, b_path, mask_folder, save_folder):
 
     T2a = np.clip(T2 * 255, 0, 255).astype(np.uint8)
 
-    cv2.imwrite(save_folder + 'block5_plane_' + str(measurment_num) +'.png', T2a)
+    cv2.imwrite(save_folder + 'block5_' + str(measurment_num) +'.png', T2a)
 
     f.close()
 
@@ -70,9 +70,9 @@ def calcCGI(measurment_num, size, b_path, mask_folder, save_folder):
 
 # 変更箇所
 calcCGI(
-    measurment_num=100,
+    measurment_num=200,
     size = 200,
-    b_path = "/Users/kent/Desktop/GI_2/result_text/block5_plane_5000.txt",
+    b_path = "/Users/kent/Desktop/GI_2/result_text/block5_0117_5000.txt",
     mask_folder='/Users/kent/Desktop/Kenkyu/GI/2024_9_10/randomimage_size200_block5_num5000/',
     save_folder='/Users/kent/Desktop/GI_2/result_text/')
 

@@ -10,9 +10,9 @@ from numpy.random import RandomState
 PX = 7.5
 MLA_F = 14200
 
-df = pd.read_csv("/Users/kent/Desktop/GI_2/result_text/experiment_result/new/mod_500.csv", header=None)
+df = pd.read_csv("/Users/kent/Desktop/GI_2/result_text/experiment_result/new/mod_400.csv", header=None)
 
-d_zero = pd.read_csv("/Users/kent/Desktop/GI_2/result_text/experiment_result/new/plane_500.csv", header=None)
+d_zero = pd.read_csv("/Users/kent/Desktop/GI_2/result_text/experiment_result/new/plane_400.csv", header=None)
 
 ans =  (df - d_zero) * PX / MLA_F
 ans.columns = ["delta_y", "delta_x"]
